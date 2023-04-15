@@ -47,26 +47,24 @@
 	</nav>
 	<Box title="Cost Estimate">
 		<label for="costEstimate">Cost Estimate</label>
-		<p class="costEstimate">{formatCost(estimateCost(conditions, printer), toFixed)}</p>
+		<div class="costEstimate">{formatCost(estimateCost(conditions, printer), toFixed)}</div>
 		<div class="inputItem">
-			<label for="toFixed">Decimal Places</label>
-			<br />
 			<div class="inputContent rangeContent">
 				<input
-					min="2"
-					max="10"
+					min="0"
+					max="28"
 					placeholder="Decimal Places"
 					id="toFixed"
 					type="range"
 					bind:value={toFixed}
 				/>
-				<output for="toFixed">{toFixed}</output>
+				<output for="toFixed">{toFixed} decimals</output>
 			</div>
 		</div></Box
 	>
 	<Box title="3D Printer">
 		<div class="printerInput">
-			<div class="inputItem printerSelectItem">
+			<div class="inputItem">
 				<label for="printer">3D Printer</label>
 				<br />
 				<div class="inputContent">
@@ -213,6 +211,7 @@
 		gap: 1ch;
 		vertical-align: middle;
 		align-items: center;
+		margin-left: 7%;
 	}
 
 	.inputContent input[type='number'],
@@ -248,13 +247,11 @@
 		margin-bottom: 1em;
 	}
 
-	.printerSelectItem {
-		min-width: 0;
-	}
-
 	.costEstimate {
-		font-size: 1rem;
+		font-size: 2rem;
 		font-weight: bold;
+		overflow: hidden;
+		text-overflow: "";
 	}
 
 	nav {
@@ -279,6 +276,9 @@
 	@media (max-width: 600px) {
 		.printerInput {
 			display: block;
+		}
+		.rangeContent {
+			max: 21;
 		}
 	}
 </style>
